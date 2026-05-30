@@ -1,6 +1,6 @@
-import './styles.css';
+import './styles.css'
 
-export function App() {
+export function App () {
   return (
     <main className="app-shell">
       <section className="calculator-panel" aria-labelledby="app-title">
@@ -11,5 +11,5 @@ export function App() {
         </p>
       </section>
     </main>
-  );
+  )
 }
