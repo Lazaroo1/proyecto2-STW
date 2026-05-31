@@ -1,4 +1,3 @@
-import type { CSSProperties } from 'react'
 import { Button } from './Button'
 
 interface KeyboardProps {
@@ -18,12 +17,6 @@ const digitRows = [
 
 const rowOperators = ['*', '-', '+']
 
-const keyboardStyle: CSSProperties = {
-  display: 'grid',
-  gridTemplateColumns: 'repeat(4, minmax(0, 1fr))',
-  gap: '10px'
-}
-
 export function Keyboard ({
   onDigit,
   onOperator,
@@ -33,7 +26,7 @@ export function Keyboard ({
   onToggleSign
 }: KeyboardProps) {
   return (
-    <div aria-label="Calculator keyboard" className="calculator-keyboard" role="group" style={keyboardStyle}>
+    <div aria-label="Calculator keyboard" className="calculator-keyboard" role="group">
       <Button label="C" variant="action" onClick={onClear} />
       <Button label="+/-" variant="action" onClick={onToggleSign} />
       <Button label="%" variant="operator" onClick={() => onOperator('%')} />
@@ -53,7 +46,7 @@ export function Keyboard ({
       )}
 
       <Button label="0" onClick={() => onDigit('0')} />
-      <Button label="." variant="action" onClick={onDecimal} />
+      <Button label="." onClick={onDecimal} />
       <Button label="=" variant="equal" onClick={onCalculate} />
     </div>
   )

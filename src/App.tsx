@@ -1,7 +1,6 @@
 import { Display } from './components/Display'
 import { Keyboard } from './components/Keyboard'
 import { useCalculator } from './hooks/useCalculator'
-import './styles.css'
 
 export function App () {
   const calculator = useCalculator()
