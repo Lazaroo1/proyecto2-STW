@@ -1,15 +1,24 @@
+import { Display } from './components/Display'
+import { Keyboard } from './components/Keyboard'
+import { useCalculator } from './hooks/useCalculator'
 import './styles.css'
 
 export function App () {
+  const calculator = useCalculator()
+
   return (
     <main className="app-shell">
-      <section className="calculator-panel" aria-labelledby="app-title">
-        <p className="eyebrow">STW</p>
-        <h1 id="app-title">Calculadora STW</h1>
-        <p className="intro">
-          Proyecto base en React, TypeScript, Vite y Bun.
-        </p>
-      </section>
+      <div aria-label="Calculator application" className="calculator-app">
+        <Display value={calculator.display} />
+        <Keyboard
+          onCalculate={calculator.calculate}
+          onClear={calculator.clear}
+          onDecimal={calculator.inputDecimal}
+          onDigit={calculator.inputDigit}
+          onOperator={calculator.inputOperator}
+          onToggleSign={calculator.toggleSign}
+        />
+      </div>
     </main>
   )
 }
