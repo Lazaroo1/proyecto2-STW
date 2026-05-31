@@ -17,6 +17,14 @@ const digitRows = [
 
 const rowOperators = ['*', '-', '+']
 
+const operatorLabels: Record<string, string> = {
+  '+': 'Add',
+  '-': 'Subtract',
+  '*': 'Multiply',
+  '/': 'Divide',
+  '%': 'Modulo'
+}
+
 export function Keyboard ({
   onDigit,
   onOperator,
@@ -27,17 +35,18 @@ export function Keyboard ({
 }: KeyboardProps) {
   return (
     <div aria-label="Calculator keyboard" className="calculator-keyboard" role="group">
-      <Button label="C" variant="action" onClick={onClear} />
-      <Button label="+/-" variant="action" onClick={onToggleSign} />
-      <Button label="%" variant="operator" onClick={() => onOperator('%')} />
-      <Button label="/" variant="operator" onClick={() => onOperator('/')} />
+      <Button ariaLabel="Clear" label="C" variant="action" onClick={onClear} />
+      <Button ariaLabel="Toggle sign" label="+/-" variant="action" onClick={onToggleSign} />
+      <Button ariaLabel={operatorLabels['%']} label="%" variant="operator" onClick={() => onOperator('%')} />
+      <Button ariaLabel={operatorLabels['/']} label="/" variant="operator" onClick={() => onOperator('/')} />
 
       {digitRows.map((row, rowIndex) =>
         row.map(digit => (
-          <Button key={digit} label={digit} onClick={() => onDigit(digit)} />
+          <Button key={digit} ariaLabel={`Digit ${digit}`} label={digit} onClick={() => onDigit(digit)} />
         )).concat(
           <Button
             key={`operator-${rowIndex}`}
+            ariaLabel={operatorLabels[rowOperators[rowIndex]]}
             label={rowOperators[rowIndex]}
             variant="operator"
             onClick={() => onOperator(rowOperators[rowIndex])}
@@ -45,9 +54,9 @@ export function Keyboard ({
         )
       )}
 
-      <Button label="0" onClick={() => onDigit('0')} />
-      <Button label="." onClick={onDecimal} />
-      <Button label="=" variant="equal" onClick={onCalculate} />
+      <Button ariaLabel="Digit 0" label="0" onClick={() => onDigit('0')} />
+      <Button ariaLabel="Decimal point" label="." onClick={onDecimal} />
+      <Button ariaLabel="Calculate" label="=" variant="equal" onClick={onCalculate} />
     </div>
   )
 }

@@ -46,6 +46,16 @@ select {
   box-shadow: -4px -4px 10px #2a2a3e, 4px 4px 10px #12121e;
 }
 
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
 .calculator-display {
   display: flex;
   align-items: center;
@@ -84,7 +94,6 @@ select {
   padding: 0;
   border: none;
   border-radius: 50%;
-  outline: none;
   background: #1e1e2e;
   box-shadow: -4px -4px 10px #2a2a3e, 4px 4px 10px #12121e;
   cursor: pointer;
