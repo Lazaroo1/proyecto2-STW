@@ -4,6 +4,8 @@ A React calculator built with TypeScript and Bun. The app includes calculator st
 management, accessible controls, component tests, Storybook stories, and a Vite
 development setup.
 
+Deploy: http://35.239.29.236/24713L/calculadora/
+
 ## Installation
 
 ```bash
